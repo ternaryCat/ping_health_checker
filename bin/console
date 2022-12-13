@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'irb'
+require './system/boot.rb'
+
+IRB.start(__FILE__)

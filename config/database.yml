@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgres
+  user: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  host: <%= ENV['POSTGRES_HOST'] %>
+  port: <%= ENV['POSTGRES_PORT'] %>
+  max_connections: 10
+
+production:
+  <<: *default
+  database: <%= ENV['POSTGRES_DB'] %>_production
+
+development:
+  <<: *default
+  database: <%= ENV['POSTGRES_DB'] %>_development
+
+test:
+  <<: *default
+  database: <%= ENV['POSTGRES_DB'] %>_test

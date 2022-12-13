@@ -1,0 +1,75 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    concurrent-ruby (1.1.10)
+    connection_pool (2.3.0)
+    diff-lcs (1.5.0)
+    dotenv (2.8.1)
+    dry-auto_inject (1.0.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-configurable (1.0.1)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-core (1.0.0)
+      concurrent-ruby (~> 1.0)
+      zeitwerk (~> 2.6)
+    dry-inflector (1.0.0)
+    dry-system (1.0.1)
+      dry-auto_inject (~> 1.0, < 2)
+      dry-configurable (~> 1.0, < 2)
+      dry-core (~> 1.0, < 2)
+      dry-inflector (~> 1.0, < 2)
+    nio4r (2.5.8)
+    pg (1.4.5)
+    puma (6.0.0)
+      nio4r (~> 2.0)
+    rack (3.0.2)
+    rackup (0.2.3)
+      rack (>= 3.0.0.beta1)
+      webrick
+    rake (13.0.6)
+    redis (5.0.5)
+      redis-client (>= 0.9.0)
+    redis-client (0.11.2)
+      connection_pool
+    roda (3.62.0)
+      rack
+    rspec (3.12.0)
+      rspec-core (~> 3.12.0)
+      rspec-expectations (~> 3.12.0)
+      rspec-mocks (~> 3.12.0)
+    rspec-core (3.12.0)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-support (3.12.0)
+    sequel (5.63.0)
+    webrick (1.7.0)
+    zeitwerk (2.6.6)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  dotenv
+  dry-system
+  pg (~> 1.4.5)
+  puma
+  rackup
+  rake
+  redis
+  roda
+  rspec
+  sequel
+  zeitwerk
+
+RUBY VERSION
+   ruby 3.1.3p185
+
+BUNDLED WITH
+   2.3.26
