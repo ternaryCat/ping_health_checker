@@ -29,7 +29,7 @@ namespace :db do
 
   desc 'Dump database schema to file.'
   task :dump do
-    break unless Container.env == 'development'
+    next unless Container.env == 'development'
 
     Container.start(:database)
     Container['database.connection'].extension :schema_dumper
