@@ -9,6 +9,8 @@ Container.register_provider(:database) do
     target.prepare :dotenv
     target.start :logger
 
+    Sequel.extension(:pg_inet)
+
     params = ERB.new(File.read('config/database.yml')).result
     config = YAML.safe_load(params, aliases: true)[Container.env]
 

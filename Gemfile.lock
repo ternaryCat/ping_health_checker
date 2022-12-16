@@ -3,6 +3,10 @@ GEM
   specs:
     concurrent-ruby (1.1.10)
     connection_pool (2.3.0)
+    database_cleaner-core (2.0.1)
+    database_cleaner-sequel (2.0.2)
+      database_cleaner-core (~> 2.0.0)
+      sequel
     diff-lcs (1.5.0)
     dotenv (2.8.1)
     dry-auto_inject (1.0.0)
@@ -15,11 +19,34 @@ GEM
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
     dry-inflector (1.0.0)
+    dry-initializer (3.1.1)
+    dry-logic (1.5.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-monads (1.6.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-schema (1.13.0)
+      concurrent-ruby (~> 1.0)
+      dry-configurable (~> 1.0, >= 1.0.1)
+      dry-core (~> 1.0, < 2)
+      dry-initializer (~> 3.0)
+      dry-logic (>= 1.5, < 2)
+      dry-types (>= 1.7, < 2)
+      zeitwerk (~> 2.6)
     dry-system (1.0.1)
       dry-auto_inject (~> 1.0, < 2)
       dry-configurable (~> 1.0, < 2)
       dry-core (~> 1.0, < 2)
       dry-inflector (~> 1.0, < 2)
+    dry-types (1.7.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+      dry-inflector (~> 1.0, < 2)
+      dry-logic (>= 1.4, < 2)
+      zeitwerk (~> 2.6)
     nio4r (2.5.8)
     pg (1.4.5)
     puma (6.0.0)
@@ -56,7 +83,10 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  database_cleaner-sequel
   dotenv
+  dry-monads
+  dry-schema
   dry-system
   pg (~> 1.4.5)
   puma

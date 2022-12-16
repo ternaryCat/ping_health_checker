@@ -8,6 +8,8 @@ gem 'rackup'
 gem 'rake'
 
 gem 'dry-system'
+gem 'dry-monads'
+gem 'dry-schema'
 gem 'zeitwerk'
 gem 'dotenv'
 
@@ -17,4 +19,5 @@ gem 'redis'
 
 group :test do
   gem 'rspec'
+  gem 'database_cleaner-sequel'
 end

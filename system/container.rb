@@ -8,5 +8,12 @@ class Container < Dry::System::Container
   use :zeitwerk
 
   configure do |config|
+    config.component_dirs.add 'contexts' do |dir|
+      dir.memoize = true
+    end
+
+    config.component_dirs.add 'apps' do |dir|
+      dir.memoize = true
+    end
   end
 end
