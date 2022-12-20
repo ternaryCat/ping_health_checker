@@ -16,7 +16,8 @@ module Metrics
       # @example call('192.999.9.9') #=> Failure
       def call(address)
         data = yield validate(address)
-        create_ip(**data.to_h)
+        ip = create_ip(**data.to_h)
+        start_address_observing(address)
       end
 
       private
@@ -30,6 +31,11 @@ module Metrics
           repository.create(address, time.now)
         end.to_result
            .or { |result| Failure([:db_error, result.exception.message]) }
+      end
+
+      def start_address_observing(address)
+        Metrics::Workers::PingIp.perform_async(address)
+        Success()
       end
     end
   end

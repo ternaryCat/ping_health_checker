@@ -15,6 +15,20 @@ services:
       - postgresql
       - redis
 
+  sidekiq:
+    build:
+      context: .
+      dockerfile: ./docker/web/Dockerfile
+    command: sidekiq -r ./system/boot.rb
+    volumes:
+      - ./:/home/project
+      - backend-modules:/usr/local/bundle
+    env_file: .env
+    links:
+      - postgresql
+      - redis
+      - web
+
   postgresql:
     image: postgres:15.0-alpine
     volumes:

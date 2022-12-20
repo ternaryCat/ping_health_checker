@@ -31,6 +31,10 @@ module Web
           end
         end
       end
+
+      r.on 'sidekiq' do
+        r.run Sidekiq::Web
+      end
     end
   end
 end

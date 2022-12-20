@@ -7,6 +7,9 @@ gem 'puma'
 gem 'rackup'
 gem 'rake'
 
+gem 'sidekiq'
+gem 'rack-session'
+
 gem 'dry-system'
 gem 'dry-monads'
 gem 'dry-schema'
@@ -16,6 +19,8 @@ gem 'dotenv'
 gem 'sequel'
 gem 'pg', '~> 1.4.5'
 gem 'redis'
+
+gem 'net-ping'
 
 group :test do
   gem 'rspec'

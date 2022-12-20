@@ -37,4 +37,51 @@ describe Metrics::Repositories::Ip do
       end
     end
   end
+
+  describe '#find' do
+    subject { described_class.new(connection: Container['database.connection']).find(address) }
+
+    let(:address) { '192.168.0.1' }
+
+    context 'ip is created' do
+      before do
+        Container['database.connection'][:ips].insert(address:, created_at: Time.now)
+      end
+
+      it 'finds record' do
+        expect(subject[:id]).to be(1)
+      end
+
+      it 'right address' do
+        expect(subject[:address]).to eq(address)
+      end
+    end
+
+    context "ip isn't created" do
+      it 'returns nil' do
+        expect(subject).to be_nil
+      end
+    end
+
+    context 'address is invalid' do
+      let(:address) { '-1' }
+
+      it 'raises error' do
+        expect{ subject }.to raise_error(Sequel::Error)
+      end
+    end
+  end
+
+  describe '#all_addresses' do
+    let(:repository) { described_class.new(connection: Container['database.connection']) }
+    let(:address) { '192.168.0.1' }
+
+    before do
+      Container['database.connection'][:ips].insert(address:, created_at: Time.now)
+    end
+
+    it 'finds address' do
+      repository.all_addresses { |row| expect(row).to eq(address) }
+    end
+  end
 end

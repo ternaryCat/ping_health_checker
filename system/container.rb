@@ -15,5 +15,9 @@ class Container < Dry::System::Container
     config.component_dirs.add 'apps' do |dir|
       dir.memoize = true
     end
+
+    config.component_dirs.add 'lib' do |dir|
+      dir.memoize = true
+    end
   end
 end
