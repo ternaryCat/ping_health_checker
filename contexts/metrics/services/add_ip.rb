@@ -16,7 +16,7 @@ module Metrics
       # @example call('192.999.9.9') #=> Failure
       def call(address)
         data = yield validate(address)
-        ip = create_ip(**data.to_h)
+        yield create_ip(**data.to_h)
         start_address_observing(address)
       end
 
