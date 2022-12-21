@@ -6,9 +6,9 @@ module Web
 
         def call(app)
           result = add_ip.call(app.params['address'])
-          return 'ip is added' if result.success?
+          return { message: 'ip is added' } if result.success?
 
-          'ip is invalid'
+          { error: result.failure.errors.to_h.inspect }
         end
       end
     end

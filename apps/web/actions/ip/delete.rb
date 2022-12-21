@@ -6,9 +6,9 @@ module Web
 
         def call(_app, address)
           result = delete_ip.call(address)
-          return 'ip is deleted' if result.success?
+          return { message: 'ip is deleted' } if result.success?
 
-          'ip is invalid'
+          { error: result.failure.errors.to_h.inspect }
         end
       end
     end

@@ -6,9 +6,9 @@ module Web
 
         def call(app, address)
           result = calculate_responses_analytics.call(address, app.params['start_datetime'], app.params['end_datetime'])
-          return result.value! if result.success?
+          return { analytics: result.value! } if result.success?
 
-          'result.failure'
+          { error: result.failure.errors.to_h.inspect }
         end
       end
     end
