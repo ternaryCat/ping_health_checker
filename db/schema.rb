@@ -4,8 +4,10 @@ Sequel.migration do
       primary_key :id
       String :address, :null=>false
       DateTime :created_at, :null=>false
+      DateTime :deleted_at
       
       index [:address], :unique=>true
+      index [:deleted_at]
       index [:id]
     end
     

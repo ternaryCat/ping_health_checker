@@ -18,12 +18,13 @@ module Web
               r.post do
                 Container['web.actions.ip.create'].call(r)
               end
-
-              r.delete do
-              end
             end
 
             r.on String do |address|
+              r.delete do
+                Container['web.actions.ip.delete'].call(r, address)
+              end
+
               r.get 'analytics' do
                 "hello world #{address}"
               end

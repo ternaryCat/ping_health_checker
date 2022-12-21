@@ -1,9 +1,9 @@
-describe Metrics::Services::AddIp do
+describe Metrics::Services::DeleteIp do
   describe '#call' do
     subject { described_class.new(time: Time, repository: ip_repository).call(address) }
 
     let(:address) { '192.168.0.1' }
-    let(:ip_repository) { instance_double('IpRepository', create: 10) }
+    let(:ip_repository) { instance_double('IpRepository', find: { id: 10 }, delete: nil) }
 
     context 'valid' do
       it 'returns success' do
@@ -18,13 +18,13 @@ describe Metrics::Services::AddIp do
         it 'returns failure' do
           expect(subject).to be_failure
         end
+      end
 
-        context 'v6' do
-          let(:address) { '684D:1111:222:3333:4444:5555:6:77' }
+      context 'ip is not created' do
+        let(:ip_repository) { instance_double('IpRepository', find: nil, delete: nil) }
 
-          it 'returns failure' do
-            expect(subject).to be_failure
-          end
+        it 'returns failure' do
+          expect(subject).to be_failure
         end
       end
     end
