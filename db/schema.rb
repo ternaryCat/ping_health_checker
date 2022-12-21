@@ -22,6 +22,7 @@ Sequel.migration do
       Float :duration, :null=>false
       DateTime :created_at, :null=>false
       
+      index [:duration]
       index [:id]
     end
   end

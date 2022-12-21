@@ -5,7 +5,7 @@ module Web
         include Import['metrics.services.add_ip']
 
         def call(app)
-          result = add_ip.call(app['address'])
+          result = add_ip.call(app.params['address'])
           return 'ip is added' if result.success?
 
           'ip is invalid'

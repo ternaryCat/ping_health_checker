@@ -3,6 +3,7 @@ require 'roda'
 module Web
   class App < Roda
     plugin :all_verbs
+    plugin :json
 
     route do |r|
       r.root do
@@ -26,7 +27,7 @@ module Web
               end
 
               r.get 'analytics' do
-                "hello world #{address}"
+                Container['web.actions.ip.analytics'].call(r, address)
               end
             end
           end
