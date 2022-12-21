@@ -65,6 +65,15 @@ module Metrics
       def delete(ip_id, deleted_at)
         connection[:ips].where(id: ip_id).update(deleted_at: deleted_at)
       end
+
+      # mark record as not deleted
+      #
+      # @return [void]
+      #
+      # @example restore(12)
+      def restore(ip_id)
+        connection[:ips].where(id: ip_id).update(deleted_at: nil)
+      end
     end
   end
 end
